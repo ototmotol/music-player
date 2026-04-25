@@ -2,45 +2,63 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Music</title>
-
+<title>Auto MP3 Player</title>
 <style>
 body{
-margin:0;
-background:#000;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
+background:#111;
+color:white;
+font-family:Arial;
+text-align:center;
+padding:40px;
 }
-
-.player-box{
-width:90%;
-max-width:520px;
-display:flex;
-justify-content:center;
-}
-
-audio{
-width:100%;
-height:56px;
-border-radius:40px;
-background:#fff;
+button{
+padding:15px 25px;
+font-size:20px;
+border:none;
+border-radius:10px;
 }
 </style>
 </head>
-
 <body>
 
-<div class="player-box">
-<audio controls autoplay>
-<source src="song1.mp3" type="audio/mpeg">
-<source src="song2.mp3" type="audio/mpeg">
-<source src="song3.mp3" type="audio/mpeg">
-<source src="song4.mp3" type="audio/mpeg">
-</audio>
-</div>
+<h1>🎵 My Music Player</h1>
+<p id="now">Ready</p>
+
+<button onclick="startMusic()">▶ Start Music</button>
+
+<audio id="audio"></audio>
+
+<script>
+let songs = [
+"song1.mp3",
+"song2.mp3",
+"song3.mp3"
+];
+
+let current = 0;
+let audio = document.getElementById("audio");
+
+function playSong(){
+audio.src = songs[current];
+document.getElementById("now").innerText =
+"Now Playing: " + songs[current];
+audio.play().catch(()=>{});
+}
+
+audio.onended = function(){
+current++;
+if(current >= songs.length) current = 0;
+playSong();
+}
+
+function startMusic(){
+playSong();
+}
+
+window.onload = function(){
+setTimeout(playSong,500);
+}
+</script>
 
 </body>
 </html>
