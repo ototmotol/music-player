@@ -7,25 +7,37 @@
 <style>
 body{
 margin:0;
-background:black;
+background:#000;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
+overflow:hidden;
+}
+
+.player-box{
+width:90%;
+max-width:520px;
+display:flex;
+justify-content:center;
 }
 
 audio{
-width:90%;
-max-width:500px;
+width:100%;
+height:56px;
+border-radius:40px;
+background:#fff;
 }
 </style>
 </head>
 
 <body>
 
+<div class="player-box">
 <audio controls autoplay>
 <source src="song1.mp3" type="audio/mpeg">
 </audio>
+</div>
 
 </body>
 </html>
